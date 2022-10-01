@@ -4,6 +4,17 @@ import { fetchCount } from './counterAPI';
 const initialState = {
   value: 0,
   status: 'idle',
+  padSounds: {
+    Q: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Yamaha%20DX100/22[kb]dx100-Pink-noise-C3a.wav.mp3',
+    W: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Yamaha%20DX100/65[kb]dx100-TomToms-C3.wav.mp3', 
+    E: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Roland%20SH09/44[kb]stompbass1.wav.mp3',
+    A: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Pearl%20SC-40%20Kicks/65[kb]SC40BD028.wav.mp3',
+    S: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Pearl%20SC-40%20Kicks/35[kb]SC40BD07.wav.mp3',
+    D: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Linn%20Drums/34[kb]linn-BDRUM13.wav.mp3',
+    Z: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Linn%20Drums/15[kb]linn-Clap-1.wav.mp3',
+    X: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Linn%20Drums/14[kb]linn-COWB-v2.wav.mp3',
+    C: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Linn%20Drums/122[kb]linn-RIDE-v2.wav.mp3',
+  },
 };
 
 // The function below is called a thunk and allows us to perform async logic. It

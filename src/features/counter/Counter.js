@@ -1,67 +1,59 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+import React from "react";
+//import styles from './Counter.module.css';
 
-export function Counter() {
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+export class Counter extends React.Component {
 
-  const incrementValue = Number(incrementAmount) || 0;
+  constructor(props) {
+    super(props);
+    this.state = {     
+    }    
+    this.keys=this.arrayKeys(this.props.padSounds)
+  }
+
+  arrayKeys(object){
+    return Object.keys(object)
+  }
+
+  detectKeyDown = (e) =>{
+   let letters= this.keys
+    for(let letra of letters) {
+      console.log(letra)
+     if (letra.id === e.key) {
+       let audio = new Audio(this.state.padSounds[letra]);
+       return audio.play();
+     }
+    } 
+   }
+
+
+
+render() {
+ 
+
+  const drumpad = this.keys.map((one)=>{  
+     let idx = React.createRef()
+    function sound() {
+      idx.current.play()
+    }
+  
+    return  <span>
+    <button   onClick={sound} id={one+this.keys.indexOf(one)} 
+    style={{backgroundColor: 'whitegrey', margin:5, width: 50, height: 50,
+                border: '4px solid black'}} className='drum-pad'>{one}<audio id={one} ref={idx} className='clip'     
+                       src={this.state.padSounds[one]}>
+                       </audio> 
+                       </button>          
+    </span>
+   });
 
   return (
-    <div>
-      <div className={styles.row}>
-        <button
-          className={styles.button}
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          -
-        </button>
-        <span className={styles.value}>{count}</span>
-        <button
-          className={styles.button}
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          +
-        </button>
-      </div>
-      <div className={styles.row}>
-        <input
-          className={styles.textbox}
-          aria-label="Set increment amount"
-          value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
-        />
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementByAmount(incrementValue))}
-        >
-          Add Amount
-        </button>
-        <button
-          className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
-        >
-          Add Async
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
-        >
-          Add If Odd
-        </button>
-      </div>
+    <div className='container-fluid' id="drum-machine">
+    <div id="display">
+    <h2>{}</h2>
+    {drumpad}
     </div>
-  );
+    </div>
+  )
+}
+
 }
