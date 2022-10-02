@@ -39,13 +39,8 @@ export class Counter extends React.Component {
     for (let letra of letters) {
       if(event.key.toUpperCase() === letra){
         console.log(letra+' press here! ')
-        let audio = new Audio(this.state.padSounds[letra]);
-       let go=()=>this.handleChange(letra.toString())
-       console.log(go)
-       
-        return audio.play()
+        document.getElementById(letra).play();
       }
-      else {}
   }
   }
 
@@ -54,12 +49,11 @@ export class Counter extends React.Component {
       let idx = React.createRef();
 
       function sound() {
-       sound.currentTime = 0;
         idx.current.play();
       }
 
       return (
-        <span onClick={() => this.handleChange(one.toString())}>
+        <span key={one} onClick={() => this.handleChange(one.toString())}>
           <button
             onClick={sound} 
             id={one + this.keys.indexOf(one)}

@@ -23,7 +23,7 @@ function App() {
    */
 
   return (
-    <div className="App" onKeyPress={counter.handleKeyPress}>    
+    <div className="App" onKeyDown={counter.handleKeyPress}>    
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Drum Machine</h1> 
